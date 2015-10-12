@@ -1,1 +1,25 @@
 mybatis SQL语句映射文件(2)增删改查、参数、缓存 http://blog.csdn.net/luqin1988/article/details/7831925
+
+<!-- 插入学生 自动主键-->
+<insert id="insertStudentAutoKey" parameterType="StudentEntity">
+	<selectKey keyProperty="studentID" resultType="String" order="BEFORE">
+			select nextval('student')
+	</selectKey>
+		INSERT INTO STUDENT_TBL (STUDENT_ID,
+                         		 STUDENT_NAME,
+                         		 STUDENT_SEX,
+                         		 STUDENT_BIRTHDAY,
+                         		 CLASS_ID)
+			  VALUES   (#{studentID},
+			            #{studentName},
+			            #{studentSex},
+			            #{studentBirthday},
+			            #{classEntity.classID})    
+</insert>
+//
+BEGIN
+    UPDATE T_SYS_SEQUENCE
+    SET current_value=LAST_INSERT_ID(current_value+increment)
+    WHERE  LOWER(name)=LOWER(seq_name);
+    RETURN LAST_INSERT_ID();
+END
