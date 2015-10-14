@@ -1,0 +1,13 @@
+<div class="jumbotron" style="background-color: #5bc0de" >
+    <div class="container">
+        <table data-toggle="table" class="table table-striped table-bordered" data-url = "user/list.action">
+            <thead>
+                 <tr>
+			        <th data-field="user_name">Item ID</th>
+			        <th data-field="user_email">Item Name</th>
+    			</tr>
+            </thead>
+        </table>
+
+    </div>
+</div>
